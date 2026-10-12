@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 360" role="img" aria-labelledby="serviceTitle serviceDesc">
+  <title id="serviceTitle">Кава та напої</title>
+  <desc id="serviceDesc">Ілюстрація чашки напою</desc>
+  <rect width="500" height="360" rx="28" fill="#f7f2ec"/>
+  <g fill="none" stroke="#B46B3D" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M110 120h180v110a48 48 0 0 1-48 48H162a48 48 0 0 1-48-48V120z" fill="#fff" opacity="0.8"/>
+    <path d="M290 146h34a54 54 0 0 1 54 54v2a46 46 0 0 1-46 46H290"/>
+    <path d="M150 86c18-18 48-18 68 0"/>
+    <path d="M168 118v-25"/>
+    <path d="M210 110V90"/>
+  </g>
+  <g fill="none" stroke="#7AA06A" stroke-width="6" stroke-linecap="round" opacity="0.9">
+    <path d="M115 244h48"/>
+    <path d="M160 244h60"/>
+  </g>
+</svg>
