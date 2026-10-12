@@ -1,52 +1,26 @@
 <!doctype html>
 <html lang="uk">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Cafe Park Avenue — Кав'ярня та кондитерська</title>
   <meta name="description" content="Cafe Park Avenue — авторські десерти, свіжа випічка та ароматна кава. Забронюйте столик або перегляньте меню онлайн.">
   <link rel="canonical" href="https://example.com/">
-  <meta name="theme-color" content="#ffffff">
-  <!-- Stylesheets: design tokens, header, services grid, components -->
+  <link rel="icon" href="assets/icons/logo.svg">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/header.css">
-  <link rel="stylesheet" href="css/services.css">
-  <link rel="stylesheet" href="css/components.css">
-  <!-- Structured data for SEO -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "CafeOrCoffeeShop",
-    "name": "Cafe Park Avenue",
-    "description": "Авторські десерти, свіжа випічка та ароматна кава.",
-    "url": "https://example.com/",
-    "telephone": "+380501234567",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "вул. Центральна, 14",
-      "addressLocality": "Місто",
-      "addressCountry": "UA"
-    }
-  }
-  </script>
-  <!-- Favicon (keep or replace) -->
-  <link rel="icon" href="/logo.png">
+  <link rel="stylesheet" href="css/override.css">
 </head>
 <body>
-  <!-- Skip link for keyboard users -->
   <a class="skip-link" href="#main">Пропустити до основного контенту</a>
 
-  <!-- Replaced generic wrapper with semantic header landmark -->
-  <header class="site-header">
-    <div class="branding">
-      <!-- Logo as a link; not H1 to keep single H1 in hero for SEO -->
+  <header class="site-header" role="banner">
+    <div class="brand">
       <a href="/" aria-label="Головна — Cafe Park Avenue">
-        <img src="logo.png" alt="Cafe Park Avenue — логотип" width="180" height="60">
+        <img src="assets/icons/logo.svg" alt="Cafe Park Avenue" width="180" height="60">
       </a>
     </div>
 
-    <!-- Semantic navigation with aria-label -->
-    <nav aria-label="Головне меню" class="main-nav">
+    <nav class="main-nav" aria-label="Головне меню">
       <ul>
         <li><a href="#about" aria-current="page">Про нас</a></li>
         <li><a href="#menu">Меню</a></li>
@@ -56,172 +30,116 @@
       </ul>
     </nav>
 
-    <!-- CTA in header kept as an accessible link/button -->
     <div class="header-actions">
       <a class="btn btn-primary" href="#booking">Забронювати</a>
     </div>
   </header>
 
-  <!-- Main landmark with id for skip link -->
-  <main id="main">
-
-    <!-- Hero is the primary page heading (single H1) -->
+  <main id="main" role="main">
     <section id="hero" class="hero" aria-labelledby="hero-title">
-      <div class="hero-content">
-        <p class="eyebrow">Кав'ярня • Кондитерська</p>
-        <h1 id="hero-title">Cafe Park Avenue</h1>
-        <p class="lead">Свіжа випічка, авторські десерти та ароматна кава в затишній атмосфері.</p>
-        <p class="hero-ctas">
-          <a class="btn btn-primary" href="#booking">Забронювати столик</a>
-          <a class="btn btn-ghost" href="#menu">Переглянути меню</a>
-        </p>
+      <div class="hero-inner container">
+        <div class="hero-content">
+          <p class="eyebrow">Кав'ярня • Кондитерська</p>
+          <h1 id="hero-title">Cafe Park Avenue</h1>
+          <p class="lead">Свіжа випічка, авторські десерти та ароматна кава в затишній атмосфері.</p>
+
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="#booking">Забронювати столик</a>
+            <a class="btn btn-ghost" href="#menu">Переглянути меню</a>
+          </div>
+
+          <ul class="hero-features" aria-hidden="true">
+            <li><img src="assets/icons/icon-coffee.svg" alt=""><span>Крафтова кава</span></li>
+            <li><img src="assets/icons/icon-cake.svg" alt=""><span>Авторські десерти</span></li>
+            <li><img src="assets/icons/icon-clock.svg" alt=""><span>Працюємо щодня</span></li>
+          </ul>
+        </div>
+
+        <figure class="hero-media" aria-hidden="false">
+          <img src="assets/images/hero.svg" alt="Інтер'єр Cafe Park Avenue із кавою та десертами" width="1200" height="800">
+        </figure>
       </div>
-      <!-- Decorative hero image: use img with meaningful alt or empty alt if purely decorative -->
-      <figure class="hero-media" aria-hidden="false">
-        <img src="Gemini_Generated_Image_8tq77o8tq77o8tq7.jpg" alt="Інтер'єр Cafe Park Avenue із кавою та десертами">
-      </figure>
     </section>
 
-    <!-- About section: H2 as next level after H1 -->
-    <section id="about" aria-labelledby="about-title">
+    <section id="about" class="container" aria-labelledby="about-title">
       <h2 id="about-title">Про нас</h2>
       <p>Ми створюємо десерти з натуральних інгредієнтів та подаємо каву з увагою до деталей.</p>
       <p>Затишна атмосфера для зустрічей, роботи та святкувань.</p>
-      <a href="#contacts">Дізнатися більше</a>
+      <a class="muted-link" href="#contacts">Дізнатися більше</a>
     </section>
 
-    <!-- Advantages as a complementary section; using section with list semantics -->
-    <section id="advantages" aria-labelledby="advantages-title">
-      <h2 id="advantages-title">Наші переваги</h2>
-      <ul>
-        <li>Свіжі інгредієнти</li>
-        <li>Авторські рецепти</li>
-        <li>Затишний інтер'єр</li>
-        <li>Швидке обслуговування</li>
-      </ul>
-    </section>
+    <section id="services" class="container" aria-labelledby="services-title">
+      <h2 id="services-title">Наші послуги</h2>
+      <p class="lede">Що ми пропонуємо</p>
 
-    <!-- Menu: container is section (H2). Categories use H3; items use article with H4 for item name -->
-    <section id="menu" aria-labelledby="menu-title">
-      <h2 id="menu-title">Меню</h2>
+      <div class="services-grid" role="list">
+        <article class="service-card" role="listitem" aria-labelledby="svc1">
+          <img class="service-media" src="assets/images/service-coffee.svg" alt="Чашка еспресо">
+          <h3 id="svc1">Кава та напої</h3>
+          <p>Класичне та авторське приготування кави.</p>
+        </article>
 
-      <div class="menu-category" aria-labelledby="menu-coffee-title">
-        <h3 id="menu-coffee-title">Кава</h3>
-        <ul>
-          <li>
-            <article aria-labelledby="item-espresso">
-              <h4 id="item-espresso">Еспресо</h4>
-              <p class="item-desc">Класичний насичений еспресо.</p>
-              <p class="item-price">45 ₴</p>
-              <button type="button" aria-label="Замовити Еспресо">Замовити</button>
-            </article>
-          </li>
+        <article class="service-card" role="listitem" aria-labelledby="svc2">
+          <img class="service-media" src="assets/images/service-dessert.svg" alt="Асортимент десертів">
+          <h3 id="svc2">Десерти на замовлення</h3>
+          <p>Торти та десерти для свят.</p>
+        </article>
 
-          <li>
-            <article aria-labelledby="item-latte">
-              <h4 id="item-latte">Латте</h4>
-              <p class="item-desc">М'який кавовий напій з молочною піною.</p>
-              <p class="item-price">70 ₴</p>
-              <button type="button" aria-label="Замовити Латте">Замовити</button>
-            </article>
-          </li>
-        </ul>
-      </div>
+        <article class="service-card" role="listitem" aria-labelledby="svc3">
+          <img class="service-media" src="assets/images/service-catering.svg" alt="Кейтеринг">
+          <h3 id="svc3">Кейтеринг</h3>
+          <p>Обслуговування заходів з доставкою.</p>
+        </article>
 
-      <div class="menu-category" aria-labelledby="menu-dessert-title">
-        <h3 id="menu-dessert-title">Десерти</h3>
-        <ul>
-          <li>
-            <article aria-labelledby="item-mars">
-              <h4 id="item-mars">Торт "Марс"</h4>
-              <p class="item-desc">Шоколадний торт з карамеллю та ніжним кремом.</p>
-              <p class="item-price">220 ₴</p>
-              <button type="button" aria-label="Замовити Торт Марс">Замовити</button>
-            </article>
-          </li>
-        </ul>
+        <article class="service-card" role="listitem" aria-labelledby="svc4">
+          <img class="service-media" src="assets/images/service-gift.svg" alt="Подарункові набори">
+          <h3 id="svc4">Подарункові набори</h3>
+          <p>Стильні набори з десертами та кавою.</p>
+        </article>
       </div>
     </section>
 
-    <!-- Gallery uses figures and descriptive alt text; if lightbox used, ensure aria-controls/expanded handled in JS -->
-    <section id="gallery" aria-labelledby="gallery-title">
-      <h2 id="gallery-title">Галерея</h2>
-
-      <ul class="gallery-list">
-        <li>
-          <figure>
-            <img src="Шоколадний Торт.jpg" alt="Шоколадний торт з карамеллю">
-            <figcaption>Шоколадний торт</figcaption>
-          </figure>
-        </li>
-        <li>
-          <figure>
-            <img src="Круасан з карамеллю.jpg" alt="Круасан з карамеллю на тарілці">
-            <figcaption>Круасан з карамеллю</figcaption>
-          </figure>
-        </li>
-      </ul>
-    </section>
-
-    <!-- Reviews: each review is an article with blockquote for semantic quoting -->
-    <section id="reviews" aria-labelledby="reviews-title">
-      <h2 id="reviews-title">Відгуки</h2>
-
-      <article aria-labelledby="review-anna">
-        <h3 id="review-anna">Анна</h3>
-        <blockquote>Найсмачніша випічка в місті. Атмосфера — чудова!</blockquote>
-      </article>
-
-      <article aria-labelledby="review-maksym">
-        <h3 id="review-maksym">Максим</h3>
-        <blockquote>Ідеальне місце для зустрічей. Рекомендую.</blockquote>
-      </article>
-    </section>
-
-    <!-- Booking form: semantic form, labels, required attributes and ARIA for errors/status -->
-    <section id="booking" tabindex="-1" aria-labelledby="booking-title">
+    <section id="booking" class="container" tabindex="-1" aria-labelledby="booking-title">
       <h2 id="booking-title">Забронювати столик</h2>
       <form id="booking-form" action="/reserve" method="post" aria-describedby="booking-desc" novalidate>
         <p id="booking-desc">Заповніть форму — ми підтверджуємо бронювання телефоном.</p>
 
         <div class="form-row">
           <label for="visitor-name">Ім'я</label>
-          <input id="visitor-name" name="name" type="text" required aria-required="true" aria-describedby="booking-desc">
+          <input id="visitor-name" name="name" type="text" required>
         </div>
 
         <div class="form-row">
           <label for="visitor-phone">Телефон</label>
-          <input id="visitor-phone" name="phone" type="tel" required aria-required="true" pattern="\+?[0-9\-\s()]{7,}" aria-describedby="booking-phone-hint">
+          <input id="visitor-phone" name="phone" type="tel" required pattern="\+?[0-9\-\s()]{7,}" aria-describedby="booking-phone-hint">
           <small id="booking-phone-hint">Наприклад: +380501234567</small>
         </div>
 
-        <div class="form-row">
-          <label for="booking-date">Дата</label>
-          <input id="booking-date" name="date" type="date" required aria-required="true" aria-describedby="booking-desc">
-        </div>
-
-        <div class="form-row">
-          <label for="booking-time">Час</label>
-          <input id="booking-time" name="time" type="time" required aria-required="true" aria-describedby="booking-desc">
+        <div class="form-row-row">
+          <div class="form-row">
+            <label for="booking-date">Дата</label>
+            <input id="booking-date" name="date" type="date" required>
+          </div>
+          <div class="form-row">
+            <label for="booking-time">Час</label>
+            <input id="booking-time" name="time" type="time" required>
+          </div>
         </div>
 
         <div class="form-row">
           <label for="guests">Кількість гостей</label>
-          <input id="guests" name="guests" type="number" min="1" max="20" value="2" required aria-required="true" aria-describedby="booking-desc">
+          <input id="guests" name="guests" type="number" min="1" max="20" value="2" required>
         </div>
 
-        <!-- Error container announced to assistive tech -->
         <div id="booking-errors" role="alert" aria-live="assertive"></div>
         <div id="booking-status" role="status" aria-live="polite"></div>
 
-        <button type="submit">Забронювати</button>
+        <button class="btn btn-primary" type="submit">Забронювати</button>
       </form>
     </section>
 
-    <!-- Contacts: use address element and accessible map iframe -->
-    <section id="contacts" aria-labelledby="contacts-title">
+    <section id="contacts" class="container" aria-labelledby="contacts-title">
       <h2 id="contacts-title">Контакти</h2>
-
       <address>
         <p>Cafe Park Avenue</p>
         <p>вул. Центральна, 14</p>
@@ -229,20 +147,18 @@
         <p><a href="mailto:hello@cafeparkavenue.com">hello@cafeparkavenue.com</a></p>
       </address>
 
-      <div class="map">
-        <!-- Provide meaningful title attribute for iframe maps -->
-        <iframe title="Карта розташування Cafe Park Avenue" src="https://maps.example.com" loading="lazy" aria-label="Мапа з розташуванням кафе"></iframe>
-      </div>
+      <aside class="map" aria-label="Карта розташування">
+        <iframe title="Карта розташування Cafe Park Avenue" src="https://maps.example.com" loading="lazy"></iframe>
+      </aside>
     </section>
   </main>
 
-  <!-- Footer landmark with additional navigation and contact links -->
-  <footer class="site-footer">
+  <footer class="site-footer" role="contentinfo">
     <nav aria-label="Допоміжна навігація">
       <ul>
         <li><a href="#about">Про нас</a></li>
         <li><a href="#menu">Меню</a></li>
-        <li><a href="#booking">Бронювання</a></li>
+        <li><a href="#services">Послуги</a></li>
         <li><a href="#contacts">Контакти</a></li>
       </ul>
     </nav>
@@ -254,8 +170,5 @@
       <li><a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook Cafe Park Avenue">Facebook</a></li>
     </ul>
   </footer>
-
-  <!-- Minimal inline script placeholder: keep interactive behavior progressive enhancement (no JS required for structure) -->
-
 </body>
 </html>
