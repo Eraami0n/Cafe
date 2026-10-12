@@ -1,0 +1,100 @@
+/* css/header.css
+   Flexbox-based header layout for Cafe Park Avenue
+   - Logo left, navigation center, CTA right
+   - Vertical alignment, even spacing, responsive wrap without absolute positioning
+   - Uses design tokens defined in css/style.css (:root variables)
+*/
+
+/* Header root */
+.site-header {
+  display: flex;                 /* Flexbox layout */
+  align-items: center;           /* Vertical centering of children */
+  gap: var(--gap-default);       /* Even gaps between direct children */
+  padding: calc(var(--space-sm)) var(--container-padding);
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  width: 100%;
+}
+
+/* Branding (logo) on the left */
+.brand {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;                /* Do not shrink; keep intrinsic size */
+}
+.brand img {
+  display: block;
+  height: auto;
+  max-height: 56px;              /* control logo visual size */
+  width: auto;
+}
+
+/* Navigation centered and flexible */
+.main-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;       /* center nav items horizontally */
+  flex: 1 1 auto;                /* expand to fill available space */
+  min-width: 0;                  /* prevent overflow in flex children */
+}
+
+/* Nav list as horizontal flex row */
+.main-nav ul {
+  display: flex;
+  gap: var(--space-md);
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.main-nav a {
+  display: inline-block;
+  padding: calc(var(--space-xs) * 0.8) var(--space-sm);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  transition: background var(--transition-base) var(--easing-deco), color var(--transition-base) var(--easing-deco);
+  white-space: nowrap;
+}
+
+.main-nav a:hover,
+.main-nav a:focus {
+  background: color-mix(in srgb, var(--color-primary) 6%, transparent 94%);
+  outline: none;
+}
+
+/* CTAs on the right */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex: 0 0 auto;                /* fixed size, do not grow */
+}
+
+.header-actions .btn {
+  min-width: 96px;               /* reasonable tap target */
+}
+
+/* Accessibility: ensure focus-visible state (delegated from global styles) */
+
+/* Responsive behavior: stack nav below header on small screens without absolute positioning */
+@media (max-width: 780px) {
+  .site-header {
+    flex-wrap: wrap;             /* allow items to wrap to next line */
+    align-items: center;
+    padding: var(--space-sm) var(--container-padding);
+  }
+
+  /* Ordering: logo first, CTA second, nav expands to full width below */
+  .brand { order: 1; }
+  .header-actions { order: 2; }
+  .main-nav { order: 3; width: 100%; margin-top: var(--space-sm); }
+
+  .main-nav ul { justify-content: space-around; }
+}
+
+/* Ensure header does not cause horizontal scroll due to flex children */
+.site-header, .main-nav, .brand, .header-actions { min-width: 0; }
