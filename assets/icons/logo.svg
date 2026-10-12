@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="60" viewBox="0 0 180 60" role="img" aria-labelledby="logoTitle logoDesc">
+  <title id="logoTitle">Cafe Park Avenue</title>
+  <desc id="logoDesc">Логотип Cafe Park Avenue</desc>
+  <g fill="none" stroke="#5A3E36" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="28" cy="30" r="24" fill="#fff"/>
+    <path d="M18 18c8-7 17-7 22 0-4 7-12 11-22 16" stroke="#2A7A4B"/>
+    <path d="M29 12c3 7-2 11-8 15" stroke="#2A7A4B"/>
+    <path d="M12 32c7 0 13-5 15-12" stroke="#2A7A4B"/>
+  </g>
+  <text x="64" y="30" fill="#5A3E36" font-family="Georgia, serif" font-weight="700" font-size="18">Cafe</text>
+  <text x="64" y="46" fill="#5A3E36" font-family="Georgia, serif" font-size="14">Park Avenue</text>
+</svg>
