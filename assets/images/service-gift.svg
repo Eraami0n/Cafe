@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 360" role="img" aria-labelledby="serviceTitle serviceDesc">
+  <title id="serviceTitle">Подарункові набори</title>
+  <desc id="serviceDesc">Ілюстрація подарункового набору</desc>
+  <rect width="500" height="360" rx="28" fill="#f8f3ee"/>
+  <g fill="none" stroke="#B46B3D" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M120 150h258v118H120z" fill="#fff" opacity="0.86"/>
+    <path d="M120 150h258"/>
+    <path d="M170 150v-32c0-16 13-29 29-29h40c16 0 29 13 29 29v32"/>
+    <path d="M228 109v156"/>
+    <path d="M150 184h178"/>
+    <path d="M150 218h178"/>
+  </g>
+</svg>
