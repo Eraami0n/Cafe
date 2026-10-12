@@ -48,7 +48,7 @@
     <!-- Semantic navigation with aria-label -->
     <nav aria-label="Головне меню" class="main-nav">
       <ul>
-        <li><a href="#about">Про нас</a></li>
+        <li><a href="#about" aria-current="page">Про нас</a></li>
         <li><a href="#menu">Меню</a></li>
         <li><a href="#gallery">Галерея</a></li>
         <li><a href="#reviews">Відгуки</a></li>
@@ -58,7 +58,7 @@
 
     <!-- CTA in header kept as an accessible link/button -->
     <div class="header-actions">
-      <a class="btn-primary" href="#booking" role="button">Забронювати</a>
+      <a class="btn btn-primary" href="#booking">Забронювати</a>
     </div>
   </header>
 
@@ -72,8 +72,8 @@
         <h1 id="hero-title">Cafe Park Avenue</h1>
         <p class="lead">Свіжа випічка, авторські десерти та ароматна кава в затишній атмосфері.</p>
         <p class="hero-ctas">
-          <a class="btn-primary" href="#booking">Забронювати столик</a>
-          <a class="btn-ghost" href="#menu">Переглянути меню</a>
+          <a class="btn btn-primary" href="#booking">Забронювати столик</a>
+          <a class="btn btn-ghost" href="#menu">Переглянути меню</a>
         </p>
       </div>
       <!-- Decorative hero image: use img with meaningful alt or empty alt if purely decorative -->
@@ -179,34 +179,35 @@
     </section>
 
     <!-- Booking form: semantic form, labels, required attributes and ARIA for errors/status -->
-    <section id="booking" aria-labelledby="booking-title">
+    <section id="booking" tabindex="-1" aria-labelledby="booking-title">
       <h2 id="booking-title">Забронювати столик</h2>
       <form id="booking-form" action="/reserve" method="post" aria-describedby="booking-desc" novalidate>
         <p id="booking-desc">Заповніть форму — ми підтверджуємо бронювання телефоном.</p>
 
         <div class="form-row">
           <label for="visitor-name">Ім'я</label>
-          <input id="visitor-name" name="name" type="text" required aria-required="true">
+          <input id="visitor-name" name="name" type="text" required aria-required="true" aria-describedby="booking-desc">
         </div>
 
         <div class="form-row">
           <label for="visitor-phone">Телефон</label>
-          <input id="visitor-phone" name="phone" type="tel" required aria-required="true" pattern="\+?[0-9\-\s()]{7,}">
+          <input id="visitor-phone" name="phone" type="tel" required aria-required="true" pattern="\+?[0-9\-\s()]{7,}" aria-describedby="booking-phone-hint">
+          <small id="booking-phone-hint">Наприклад: +380501234567</small>
         </div>
 
         <div class="form-row">
           <label for="booking-date">Дата</label>
-          <input id="booking-date" name="date" type="date" required aria-required="true">
+          <input id="booking-date" name="date" type="date" required aria-required="true" aria-describedby="booking-desc">
         </div>
 
         <div class="form-row">
           <label for="booking-time">Час</label>
-          <input id="booking-time" name="time" type="time" required aria-required="true">
+          <input id="booking-time" name="time" type="time" required aria-required="true" aria-describedby="booking-desc">
         </div>
 
         <div class="form-row">
           <label for="guests">Кількість гостей</label>
-          <input id="guests" name="guests" type="number" min="1" max="20" value="2" required aria-required="true">
+          <input id="guests" name="guests" type="number" min="1" max="20" value="2" required aria-required="true" aria-describedby="booking-desc">
         </div>
 
         <!-- Error container announced to assistive tech -->
@@ -249,8 +250,8 @@
     <p>© <span aria-hidden="true">2026</span> Cafe Park Avenue</p>
 
     <ul class="social">
-      <li><a href="https://instagram.com" aria-label="Instagram Cafe Park Avenue">Instagram</a></li>
-      <li><a href="https://facebook.com" aria-label="Facebook Cafe Park Avenue">Facebook</a></li>
+      <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram Cafe Park Avenue">Instagram</a></li>
+      <li><a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook Cafe Park Avenue">Facebook</a></li>
     </ul>
   </footer>
 
