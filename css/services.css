@@ -1,0 +1,58 @@
+/* css/services.css
+   Responsive CSS Grid for Services section
+   - Desktop: 3 columns
+   - Tablet: 2 columns
+   - Mobile: 1 column
+   - Uses grid-template-columns, gap and minmax()
+   - No fixed card widths; cards stretch to available column size
+   - Relies on design tokens defined in css/style.css (:root variables)
+*/
+
+.services-section {
+  padding: var(--space-lg) 0;
+}
+
+.services-grid {
+  display: grid;
+  gap: var(--gap-default); /* even gaps between cards */
+  grid-template-columns: repeat(3, minmax(0, 1fr)); /* Desktop: 3 columns */
+  align-items: start;
+}
+
+/* Each card occupies full width of its grid cell and is flexible */
+.service-card {
+  width: 100%; /* avoid intrinsic width; adapt to column size */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-md);
+}
+
+/* Media inside card should scale and cover available area */
+.service-card .service-media {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: calc(var(--radius-md) - 2px);
+}
+
+/* Tablet breakpoint: 2 columns */
+@media (max-width: 900px) {
+  .services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Mobile breakpoint: 1 column */
+@media (max-width: 600px) {
+  .services-grid {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .service-card .service-media {
+    height: 200px; /* slightly taller media on narrow screens */
+  }
+}
