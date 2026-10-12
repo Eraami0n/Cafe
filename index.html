@@ -1,174 +1,443 @@
 <!doctype html>
 <html lang="uk">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Cafe Park Avenue — Кав'ярня та кондитерська</title>
-  <meta name="description" content="Cafe Park Avenue — авторські десерти, свіжа випічка та ароматна кава. Забронюйте столик або перегляньте меню онлайн.">
-  <link rel="canonical" href="https://example.com/">
-  <link rel="icon" href="assets/icons/logo.svg">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/override.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cafe Park Avenue</title>
+  <style>
+    :root{
+      --bg: #f3f2f0;
+      --panel: #e6dfd3;
+      --text: #2b2b2b;
+      --muted: #5d5d5d;
+      --purple: #4a2f4d;
+      --brown: #5a3d35;
+      --green: #3d8a5c;
+      --orange: #cc6b3a;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Segoe UI", Tahoma, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      padding: 0;
+    }
+
+    .page {
+      width: 100%;
+      display: flex;
+      gap: 68px;
+      padding: 20px 0 0 0;
+    }
+
+    .sidebar {
+      width: 260px;
+      padding-left: 26px;
+      padding-top: 12px;
+      flex-shrink: 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 32px;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border: 2px solid var(--brown);
+      border-radius: 50%;
+      position: relative;
+      flex-shrink: 0;
+      background: transparent;
+    }
+
+    .brand-mark::before {
+      content: "";
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border: 3px solid var(--brown);
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-radius: 50%;
+      transform: rotate(-24deg);
+      left: 10px;
+      top: 10px;
+    }
+
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border: 2px solid transparent;
+      border-left: 2px solid var(--brown);
+      border-top: 2px solid var(--brown);
+      border-radius: 50%;
+      transform: rotate(40deg);
+      right: 7px;
+      top: 16px;
+      opacity: 0.9;
+    }
+
+    .brand-text {
+      line-height: 1.05;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 500;
+      font-size: 19px;
+      letter-spacing: 0.2px;
+      color: var(--text);
+    }
+
+    .brand-text strong {
+      display: block;
+      font-weight: 600;
+      font-size: 20px;
+    }
+
+    .nav {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .nav a {
+      font-size: 15px;
+      line-height: 1.2;
+      color: var(--purple);
+      text-decoration: none;
+      font-weight: 500;
+      width: fit-content;
+    }
+
+    .nav a:hover { text-decoration: underline; }
+
+    .content {
+      flex: 1;
+      padding-top: 18px;
+      padding-left: 4px;
+      max-width: 980px;
+    }
+
+    .eyebrow {
+      font-size: 16px;
+      line-height: 1.5;
+      color: #4d4d4d;
+      letter-spacing: 0.2px;
+      margin-top: 10px;
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+
+    .eyebrow .dot {
+      margin: 0 10px;
+      color: #666;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 700;
+      font-size: clamp(44px, 3vw, 62px);
+      letter-spacing: -1px;
+      color: #1b1b1b;
+      line-height: 0.96;
+    }
+
+    .lead {
+      margin-top: 26px;
+      max-width: 840px;
+      font-size: 27px;
+      line-height: 1.4;
+      color: #676767;
+      font-weight: 400;
+    }
+
+    .cta-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+
+    .cta-link {
+      color: var(--brown);
+      text-decoration: none;
+      font-size: 17px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0;
+    }
+
+    .cta-link.secondary {
+      color: var(--brown);
+      opacity: 0.9;
+    }
+
+    .cta-link .arrow {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      border: 2px solid var(--green);
+      border-radius: 50%;
+      position: relative;
+      margin-right: 4px;
+    }
+
+    .cta-link .arrow::before {
+      content: "";
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-left: 2px solid var(--green);
+      border-bottom: 2px solid var(--green);
+      transform: rotate(45deg);
+      left: 4px;
+      top: 4px;
+    }
+
+    .features {
+      margin-top: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      max-width: 420px;
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: #2d2d2d;
+      font-size: 23px;
+      line-height: 1.3;
+      font-weight: 400;
+    }
+
+    .feature .icon {
+      width: 30px;
+      height: 30px;
+      display: inline-block;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .feature .icon.coffee{
+      border: 3px solid var(--green);
+      border-radius: 10px;
+      width: 28px;
+      height: 24px;
+      transform: translateY(1px);
+    }
+
+    .feature .icon.coffee::before {
+      content: "";
+      position: absolute;
+      right: -9px;
+      top: 7px;
+      width: 10px;
+      height: 10px;
+      border: 3px solid var(--green);
+      border-left: none;
+      border-radius: 0 12px 12px 0;
+    }
+
+    .feature .icon.coffee::after {
+      content: "";
+      position: absolute;
+      left: 5px;
+      top: -8px;
+      width: 10px;
+      height: 8px;
+      border: 3px solid var(--green);
+      border-bottom: none;
+      border-radius: 12px 12px 0 0;
+    }
+
+    .feature .icon.cake {
+      border: 3px solid var(--orange);
+      border-radius: 10px;
+      width: 28px;
+      height: 22px;
+      transform: translateY(2px);
+      position: relative;
+    }
+
+    .feature .icon.cake::before {
+      content: "";
+      position: absolute;
+      width: 14px;
+      height: 12px;
+      left: 5px;
+      top: -9px;
+      border: 3px solid var(--orange);
+      border-bottom: none;
+      border-radius: 10px 10px 0 0;
+    }
+
+    .feature .icon.clock {
+      border: 3px solid var(--green);
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      position: relative;
+    }
+
+    .feature .icon.clock::before {
+      content: "";
+      position: absolute;
+      width: 2px;
+      height: 9px;
+      background: var(--green);
+      left: 12px;
+      top: 7px;
+      border-radius: 2px;
+      transform: rotate(35deg);
+    }
+
+    .feature .icon.clock::after {
+      content: "";
+      position: absolute;
+      width: 2px;
+      height: 7px;
+      background: var(--green);
+      left: 13px;
+      top: 13px;
+      border-radius: 2px;
+      transform: rotate(95deg);
+    }
+
+    .hero-panel {
+      margin-top: 36px;
+      width: 100%;
+      max-width: 1080px;
+      height: 360px;
+      background: var(--panel);
+      border-radius: 28px 28px 0 0;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.02);
+    }
+
+    .hero-panel::before {
+      content: "";
+      position: absolute;
+      width: 62%;
+      height: 54%;
+      right: 8%;
+      bottom: 20%;
+      background: rgba(255,255,255,0.28);
+      border-radius: 32px;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.02);
+    }
+
+    .hero-panel::after {
+      content: "";
+      position: absolute;
+      width: 52%;
+      height: 36%;
+      right: 16%;
+      bottom: 10%;
+      background: rgba(255,255,255,0.42);
+      border-radius: 26px;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.03);
+    }
+
+    @media (max-width: 900px){
+      .page {
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .sidebar {
+        width: 100%;
+        padding-left: 24px;
+      }
+
+      .content {
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+
+      .lead { font-size: 22px; }
+      .hero-panel { height: 260px; }
+    }
+  </style>
 </head>
 <body>
-  <a class="skip-link" href="#main">Пропустити до основного контенту</a>
-
-  <header class="site-header" role="banner">
-    <div class="brand">
-      <a href="/" aria-label="Головна — Cafe Park Avenue">
-        <img src="assets/icons/logo.svg" alt="Cafe Park Avenue" width="180" height="60">
-      </a>
-    </div>
-
-    <nav class="main-nav" aria-label="Головне меню">
-      <ul>
-        <li><a href="#about" aria-current="page">Про нас</a></li>
-        <li><a href="#menu">Меню</a></li>
-        <li><a href="#gallery">Галерея</a></li>
-        <li><a href="#reviews">Відгуки</a></li>
-        <li><a href="#contacts">Контакти</a></li>
-      </ul>
-    </nav>
-
-    <div class="header-actions">
-      <a class="btn btn-primary" href="#booking">Забронювати</a>
-    </div>
-  </header>
-
-  <main id="main" role="main">
-    <section id="hero" class="hero" aria-labelledby="hero-title">
-      <div class="hero-inner container">
-        <div class="hero-content">
-          <p class="eyebrow">Кав'ярня • Кондитерська</p>
-          <h1 id="hero-title">Cafe Park Avenue</h1>
-          <p class="lead">Свіжа випічка, авторські десерти та ароматна кава в затишній атмосфері.</p>
-
-          <div class="hero-ctas">
-            <a class="btn btn-primary" href="#booking">Забронювати столик</a>
-            <a class="btn btn-ghost" href="#menu">Переглянути меню</a>
-          </div>
-
-          <ul class="hero-features" aria-hidden="true">
-            <li><img src="assets/icons/icon-coffee.svg" alt=""><span>Крафтова кава</span></li>
-            <li><img src="assets/icons/icon-cake.svg" alt=""><span>Авторські десерти</span></li>
-            <li><img src="assets/icons/icon-clock.svg" alt=""><span>Працюємо щодня</span></li>
-          </ul>
+  <div class="page">
+    <aside class="sidebar">
+      <div class="brand" aria-label="Cafe Park Avenue">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <div class="brand-text">
+          <strong>Cafe</strong>
+          Park Avenue
         </div>
-
-        <figure class="hero-media" aria-hidden="false">
-          <img src="assets/images/hero.svg" alt="Інтер'єр Cafe Park Avenue із кавою та десертами" width="1200" height="800">
-        </figure>
       </div>
-    </section>
 
-    <section id="about" class="container" aria-labelledby="about-title">
-      <h2 id="about-title">Про нас</h2>
-      <p>Ми створюємо десерти з натуральних інгредієнтів та подаємо каву з увагою до деталей.</p>
-      <p>Затишна атмосфера для зустрічей, роботи та святкувань.</p>
-      <a class="muted-link" href="#contacts">Дізнатися більше</a>
-    </section>
+      <nav class="nav" aria-label="Головне меню">
+        <a href="#">Про нас</a>
+        <a href="#">Меню</a>
+        <a href="#">Галерея</a>
+        <a href="#">Відгуки</a>
+        <a href="#">Контакти</a>
+        <a href="#">Забронювати</a>
+      </nav>
+    </aside>
 
-    <section id="services" class="container" aria-labelledby="services-title">
-      <h2 id="services-title">Наші послуги</h2>
-      <p class="lede">Що ми пропонуємо</p>
-
-      <div class="services-grid" role="list">
-        <article class="service-card" role="listitem" aria-labelledby="svc1">
-          <img class="service-media" src="assets/images/service-coffee.svg" alt="Чашка еспресо">
-          <h3 id="svc1">Кава та напої</h3>
-          <p>Класичне та авторське приготування кави.</p>
-        </article>
-
-        <article class="service-card" role="listitem" aria-labelledby="svc2">
-          <img class="service-media" src="assets/images/service-dessert.svg" alt="Асортимент десертів">
-          <h3 id="svc2">Десерти на замовлення</h3>
-          <p>Торти та десерти для свят.</p>
-        </article>
-
-        <article class="service-card" role="listitem" aria-labelledby="svc3">
-          <img class="service-media" src="assets/images/service-catering.svg" alt="Кейтеринг">
-          <h3 id="svc3">Кейтеринг</h3>
-          <p>Обслуговування заходів з доставкою.</p>
-        </article>
-
-        <article class="service-card" role="listitem" aria-labelledby="svc4">
-          <img class="service-media" src="assets/images/service-gift.svg" alt="Подарункові набори">
-          <h3 id="svc4">Подарункові набори</h3>
-          <p>Стильні набори з десертами та кавою.</p>
-        </article>
+    <main class="content">
+      <div class="eyebrow">
+        Кав'ярня <span class="dot">•</span> Кондитерська
       </div>
-    </section>
 
-    <section id="booking" class="container" tabindex="-1" aria-labelledby="booking-title">
-      <h2 id="booking-title">Забронювати столик</h2>
-      <form id="booking-form" action="/reserve" method="post" aria-describedby="booking-desc" novalidate>
-        <p id="booking-desc">Заповніть форму — ми підтверджуємо бронювання телефоном.</p>
+      <h1>Cafe Park Avenue</h1>
 
-        <div class="form-row">
-          <label for="visitor-name">Ім'я</label>
-          <input id="visitor-name" name="name" type="text" required>
+      <p class="lead">
+        Свіжа випічка, авторські десерти та ароматна кава в затишній атмосфері.
+      </p>
+
+      <div class="cta-row">
+        <a href="#" class="cta-link">
+          <span class="arrow"></span>Забронювати столик
+        </a>
+        <a href="#" class="cta-link secondary">Переглянути меню</a>
+      </div>
+
+      <div class="features">
+        <div class="feature">
+          <span class="icon coffee" aria-hidden="true"></span>
+          <span>Крафтова кава</span>
         </div>
 
-        <div class="form-row">
-          <label for="visitor-phone">Телефон</label>
-          <input id="visitor-phone" name="phone" type="tel" required pattern="\+?[0-9\-\s()]{7,}" aria-describedby="booking-phone-hint">
-          <small id="booking-phone-hint">Наприклад: +380501234567</small>
+        <div class="feature">
+          <span class="icon cake" aria-hidden="true"></span>
+          <span>Авторські десерти</span>
         </div>
 
-        <div class="form-row-row">
-          <div class="form-row">
-            <label for="booking-date">Дата</label>
-            <input id="booking-date" name="date" type="date" required>
-          </div>
-          <div class="form-row">
-            <label for="booking-time">Час</label>
-            <input id="booking-time" name="time" type="time" required>
-          </div>
+        <div class="feature">
+          <span class="icon clock" aria-hidden="true"></span>
+          <span>Працюємо щодня</span>
         </div>
+      </div>
 
-        <div class="form-row">
-          <label for="guests">Кількість гостей</label>
-          <input id="guests" name="guests" type="number" min="1" max="20" value="2" required>
-        </div>
-
-        <div id="booking-errors" role="alert" aria-live="assertive"></div>
-        <div id="booking-status" role="status" aria-live="polite"></div>
-
-        <button class="btn btn-primary" type="submit">Забронювати</button>
-      </form>
-    </section>
-
-    <section id="contacts" class="container" aria-labelledby="contacts-title">
-      <h2 id="contacts-title">Контакти</h2>
-      <address>
-        <p>Cafe Park Avenue</p>
-        <p>вул. Центральна, 14</p>
-        <p><a href="tel:+380501234567">+38 (050) 123-45-67</a></p>
-        <p><a href="mailto:hello@cafeparkavenue.com">hello@cafeparkavenue.com</a></p>
-      </address>
-
-      <aside class="map" aria-label="Карта розташування">
-        <iframe title="Карта розташування Cafe Park Avenue" src="https://maps.example.com" loading="lazy"></iframe>
-      </aside>
-    </section>
-  </main>
-
-  <footer class="site-footer" role="contentinfo">
-    <nav aria-label="Допоміжна навігація">
-      <ul>
-        <li><a href="#about">Про нас</a></li>
-        <li><a href="#menu">Меню</a></li>
-        <li><a href="#services">Послуги</a></li>
-        <li><a href="#contacts">Контакти</a></li>
-      </ul>
-    </nav>
-
-    <p>© <span aria-hidden="true">2026</span> Cafe Park Avenue</p>
-
-    <ul class="social">
-      <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram Cafe Park Avenue">Instagram</a></li>
-      <li><a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook Cafe Park Avenue">Facebook</a></li>
-    </ul>
-  </footer>
+      <div class="hero-panel" aria-hidden="true"></div>
+    </main>
+  </div>
 </body>
 </html>
