@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 360" role="img" aria-labelledby="serviceTitle serviceDesc">
+  <title id="serviceTitle">Кейтеринг</title>
+  <desc id="serviceDesc">Ілюстрація кейтерингу</desc>
+  <rect width="500" height="360" rx="28" fill="#f8f3ee"/>
+  <g fill="none" stroke="#B46B3D" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M110 124h220c20 0 34 17 34 34v104c0 28-23 52-52 52H128c-29 0-52-24-52-52V158c0-17 14-34 34-34z" fill="#fff" opacity="0.8"/>
+    <path d="M170 124v-32c0-16 13-29 29-29h42c16 0 29 13 29 29v32"/>
+    <path d="M150 184h160"/>
+    <path d="M150 214h125"/>
+    <path d="M150 244h160"/>
+  </g>
+</svg>
